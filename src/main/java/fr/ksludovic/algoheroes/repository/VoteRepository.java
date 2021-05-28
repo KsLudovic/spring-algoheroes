@@ -1,0 +1,14 @@
+package fr.ksludovic.algoheroes.repository;
+
+import fr.ksludovic.algoheroes.model.Post;
+import fr.ksludovic.algoheroes.model.User;
+import fr.ksludovic.algoheroes.model.Vote;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface VoteRepository extends JpaRepository<Vote, Long> {
+    Optional<Vote> findTopByPostAndUserOrderByVoteIdDesc(Post post, User currentUser);
+}
